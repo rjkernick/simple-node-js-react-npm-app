@@ -1,5 +1,5 @@
 FROM node:8
-RUN apt-get update && apt-get install -y libltdl7 
+RUN apt-get update && apt-get install -y libltdl7 && rm -rf /var/lib/apt/lists/*
 ADD yarn.lock /yarn.lock
 ADD package.json /package.json
 
