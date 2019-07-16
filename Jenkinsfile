@@ -7,25 +7,25 @@ pipeline {
     nodejs 'nodejs'
   }
   stages {
-    stage('Build') {
+    stage('Install dependencies') {
       steps {
-          sh 'npm install'
+          sh 'yarn install'
       }
     }
     stage('Test') {
       steps {
-          sh 'npm test'
+          sh 'yarn test'
       }
     }
 
     stage('Quality Gate'){
       steps{
-        sh 'npm run sonar'
+        sh 'yarn sonar'
       }
     }
     stage('Build and Push Docker'){
       steps{
-        echo "Docker here"
+        sh 'docker build -t simple-react:0.0.1'
       }
     }
 
