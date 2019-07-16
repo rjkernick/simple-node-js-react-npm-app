@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Build and Push Docker'){
       steps{
-        sh 'sudo apt-get update && sudo apt-get install -y libltdl7 && sudo rm -rf /var/lib/apt/lists/*'
+        sh 'apt-get update && apt-get install -y libltdl7'
         sh 'docker build -t simple-react:0.0.1'
       }
     }
