@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Build and Push Docker'){
       steps{
-        sh 'docker build -t simple-react:0.0.1'
+        sh 'docker build -t simple-react:0.0.1 .'
       }
     }
 
