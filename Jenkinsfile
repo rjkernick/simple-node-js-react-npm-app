@@ -1,6 +1,8 @@
 pipeline {
   agent any
-
+  environment {
+    CI = 'true'
+  }
   tools{
     nodejs 'nodejs'
   }
@@ -12,14 +14,13 @@ pipeline {
     }
     stage('Test') {
       steps {
-          // sh 'npm test'
-          echo "tests here"
+          sh 'npm test'
       }
     }
 
     stage('Quality Gate'){
       steps{
-        echo "sonarqube here"
+        sh 'npm run sonar'
       }
     }
     stage('Build and Push Docker'){

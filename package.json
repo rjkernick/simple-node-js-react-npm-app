@@ -10,7 +10,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --watchAll",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "sonar": "node sonar-project.js"
+  },
+  "devDependencies": {
+    "sonarqube-scanner": "^2.5.0"
   }
 }
