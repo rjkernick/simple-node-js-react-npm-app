@@ -33,16 +33,9 @@ pipeline {
       }
     }
 
-    stage('Image scan sanity test'){
-      steps{
-        sh "docker pull alpine:latest"
-        aquaMicroscanner imageName: 'alpine:latest', notCompliesCmd: '', onDisallowed: 'ignore', outputFormat: 'html'
-      }
-    }
-
     stage('Docker image scan'){
       steps{
-        aquaMicroscanner imageName: 'rjkernick/simple-react:0.0.1 .', notCompliesCmd: '', onDisallowed: 'ignore', outputFormat: 'html'
+        aquaMicroscanner imageName: 'rjkernick/simple-react:0.0.1', notCompliesCmd: '', onDisallowed: 'ignore', outputFormat: 'html'
       }
     }
   }
