@@ -6,7 +6,7 @@ pipeline {
   tools{
     nodejs 'nodejs'
   }
-  credentials{
+  environment{
     DOCKER_CREDS = credentials('dockerhub-creds')
   }
   stages {
