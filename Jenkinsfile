@@ -6,6 +6,9 @@ pipeline {
   tools{
     nodejs 'nodejs'
   }
+  credentials{
+    DOCKER_CREDS = credentials('dockerhub-creds')
+  }
   stages {
     stage('Install dependencies') {
       steps {
@@ -26,12 +29,14 @@ pipeline {
     stage('Build and Push Docker'){
       steps{
         sh 'docker build -t simple-react:0.0.1 .'
+        sh 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
+        sh 'docker push simple-react:0.0.1'
       }
     }
 
     stage('Docker image scan'){
       steps{
-        echo "scan here"
+        aquaMicroScanner imageName: 'simple-react:0.0.1 .', notCompilesCmd: 'exit 1', onDisallowed: 'fail'
       }
     }
   }
