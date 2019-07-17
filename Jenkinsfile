@@ -35,7 +35,7 @@ pipeline {
 
     stage('Docker image scan'){
       steps{
-        aquaMicroscanner imageName: 'rjkernick/simple-react:0.0.1', notCompliesCmd: '', onDisallowed: 'ignore', outputFormat: 'html'
+        aquaMicroscanner imageName: 'rjkernick/simple-react:0.0.1', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
       }
     }
   }
