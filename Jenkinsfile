@@ -2,13 +2,12 @@ pipeline {
   agent any
   environment {
     CI = 'true'
+    DOCKER_CREDS = credentials('dockerhub-creds')
   }
   tools{
     nodejs 'nodejs'
   }
-  environment{
-    DOCKER_CREDS = credentials('dockerhub-creds')
-  }
+  
   stages {
     stage('Install dependencies') {
       steps {
